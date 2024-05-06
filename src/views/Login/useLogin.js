@@ -18,6 +18,7 @@ export function useLogin({ loginForm, loginFormRef }) {
         loginLoading.value = false
         // 登录后操作
         router.push('/')
+        await store.dispatch('user/getUserInfo')
       } catch (error) {
         loginLoading.value = false
         console.log(error)

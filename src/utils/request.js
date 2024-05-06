@@ -1,3 +1,5 @@
+import store from '@/store'
+import { isCheckTimeout } from '@/utils/auth'
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
 
@@ -6,10 +8,21 @@ const service = axios.create({
   timeout: 5000,
 })
 
-service.interceptors.request.use((config) => {
+service.interceptors.request.use(async (config) => {
   // 添加 icode
   config.headers.icode = process.env?.VUE_APP_IMOOC_CODE
-  // 必须返回 config
+
+  const token = store.getters['user/token']
+
+  if (token) {
+    if (await isCheckTimeout()) {
+      // 登出操作
+      store.dispatch('user/logout')
+      return Promise.reject(new Error('token 失效'))
+    }
+    config.headers.Authorization = `Bearer ${token}`
+  }
+
   return config
 })
 
@@ -26,6 +39,14 @@ service.interceptors.response.use(
     }
   },
   (error) => {
+    if (
+      error.response &&
+      error.response.data &&
+      error.response.data.code === 401
+    ) {
+      store.dispatch('user/logout')
+    }
+
     ElMessage.error(error.message)
     return Promise.reject(error)
   }
