@@ -1,11 +1,18 @@
 <template>
-  <div class="app-wrapper">
+  <div
+    class="app-wrapper"
+    :class="[
+      store.getters['app/sidebarOpened'] ? 'openSidebar' : 'hideSidebar',
+    ]"
+  >
     <!-- 左侧 menu -->
+    <!-- <el-scrollbar> -->
     <ink-sidebar
       id="guide-sidebar"
       class="sidebar-container"
       :style="{ backgroundColor: variables.menuBg }"
     ></ink-sidebar>
+    <!-- </el-scrollbar> -->
     <div class="main-container">
       <div class="fixed-header">
         <!-- 顶部的 navbar -->
@@ -18,10 +25,13 @@
 </template>
 
 <script setup>
-import InkAppMain from '@/layout/components/InkAppMain/InkAppMain.vue'
-import InkNavibar from '@/layout/components/InkNavibar/InkNavibar.vue'
-import InkSidebar from '@/layout/components/InkSidebar/InkSidebar.vue'
+import InkAppMain from '@/layout/components/InkAppMain/InkAppMain'
+import InkNavibar from '@/layout/components/InkNavibar/InkNavibar'
+import InkSidebar from '@/layout/components/InkSidebar/InkSidebar'
 import variables from '@/styles/variables.module.scss'
+import { useStore } from 'vuex'
+
+const store = useStore()
 </script>
 
 <style lang="scss" scoped>
@@ -41,5 +51,10 @@ import variables from '@/styles/variables.module.scss'
   right: 0;
   z-index: 9;
   width: calc(100% - #{$sideBarWidth});
+  transition: width #{$sideBarDuration};
+}
+
+.hideSidebar .fixed-header {
+  width: calc(100% - #{$hideSideBarWidth});
 }
 </style>
