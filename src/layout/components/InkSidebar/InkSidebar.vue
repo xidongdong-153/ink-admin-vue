@@ -2,7 +2,7 @@
   <div class="">
     <div class="logo-container">
       <el-avatar
-        size="44"
+        :size="logoHeight"
         shape="square"
         src="https://avatars.githubusercontent.com/u/78343897?v=4"
       />
@@ -21,11 +21,13 @@ import { useStore } from 'vuex'
 import SidebarMenu from './SidebarMenu'
 
 const store = useStore()
+
+const logoHeight = 44
 </script>
 
 <style lang="scss" scoped>
 .logo-container {
-  height: 44px;
+  height: v-bind(logoHeight) + 'px';
   padding: 10px 0 22px 0;
   display: flex;
   align-items: center;

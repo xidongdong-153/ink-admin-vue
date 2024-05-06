@@ -1,6 +1,9 @@
 <template>
   <div class="navbar">
-    <hamburger-icon class="hamburger-container" />
+    <div>
+      <hamburger-icon class="hamburger-container" />
+      <breadcrumb-path class="breadcrumb-container" />
+    </div>
     <div class="right-menu">
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
@@ -32,6 +35,7 @@
 </template>
 
 <script setup>
+import BreadcrumbPath from '@/components/Breadcrumb/BreadcrumbPath'
 import HamburgerIcon from '@/components/HamburgerIcon/HamburgerIcon'
 import store from '@/store'
 
