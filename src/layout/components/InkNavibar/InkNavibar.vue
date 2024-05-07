@@ -5,6 +5,8 @@
       <breadcrumb-path class="breadcrumb-container" />
     </div>
     <div class="right-menu">
+      <header-search class="right-menu-item hover-effect"></header-search>
+      <screenfull class="right-menu-item hover-effect" />
       <theme-picker class="right-menu-item hover-effect"></theme-picker>
       <lang-select class="right-menu-item hover-effect" />
       <!-- 头像 -->
@@ -39,7 +41,9 @@
 <script setup>
 import BreadcrumbPath from '@/components/Breadcrumb/BreadcrumbPath'
 import HamburgerIcon from '@/components/HamburgerIcon/HamburgerIcon'
+import HeaderSearch from '@/components/HeaderSearch/HeaderSearch'
 import LangSelect from '@/components/LangSelect/LangSelect'
+import Screenfull from '@/components/Screenfull/ScreenfullCom'
 import ThemePicker from '@/components/ThemeSelect/ThemeSelect'
 import store from '@/store'
 

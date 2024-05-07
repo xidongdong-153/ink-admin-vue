@@ -1,8 +1,7 @@
 import en from '@/i18n/lang/en'
 import zh from '@/i18n/lang/zh'
-import { createI18n } from 'vue-i18n'
-
 import store from '@/store'
+import { createI18n } from 'vue-i18n'
 
 const messages = {
   en: {
