@@ -3,8 +3,8 @@ import { getItem, setItem } from '@/utils/storage'
 /**
  * 获取时间戳
  */
-export async function getTimeStamp() {
-  const timeStamp = await getItem(TIME_STAMP)
+export function getTimeStamp() {
+  const timeStamp = getItem(TIME_STAMP)
   return timeStamp
 }
 /**
@@ -16,10 +16,10 @@ export function setTimeStamp() {
 /**
  * 是否超时
  */
-export async function isCheckTimeout() {
+export function isCheckTimeout() {
   // 当前时间戳
   const currentTime = Date.now()
   // 缓存时间戳
-  const timeStamp = await getTimeStamp()
+  const timeStamp = getTimeStamp()
   return currentTime - timeStamp > TOKEN_TIMEOUT_VALUE
 }

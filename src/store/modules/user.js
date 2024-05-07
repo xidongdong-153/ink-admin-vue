@@ -7,7 +7,7 @@ import md5 from 'md5'
 export default {
   namespaced: true,
   state: () => ({
-    token: '',
+    token: getItem(TOKEN) || '',
     userInfo: {},
   }),
   mutations: {
@@ -28,15 +28,11 @@ export default {
           password: md5(password),
         })
         setTimeStamp()
-        await setItem(TOKEN, data.token)
+        setItem(TOKEN, data.token)
         commit('setToken', data.token)
       } catch (error) {
         throw new Error(error.message)
       }
-    },
-    async loadLocal({ commit }) {
-      const token = await getItem(TOKEN)
-      commit('setToken', token)
     },
     async getUserInfo(context) {
       const res = await getUserInfo()

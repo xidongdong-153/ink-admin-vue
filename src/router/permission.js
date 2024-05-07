@@ -8,7 +8,6 @@ const whiteList = ['/login']
  * 路由前置守卫
  */
 router.beforeEach(async (to, from, next) => {
-  await store.dispatch('user/loadLocal') // 加载token
   const token = store.getters['user/token'] // 判断是否有token
   const hasUserInfo = store.getters['user/userInfo'] // 判断是否有token
 

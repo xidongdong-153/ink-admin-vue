@@ -3,10 +3,11 @@
     <component v-if="icon.includes('el-icon')" :is="elIconName"></component>
     <svg-icon v-else :icon="icon"></svg-icon>
   </el-icon>
-  <span>{{ title }}</span>
+  <span>{{ generateTitle(title) }}</span>
 </template>
 
 <script setup>
+import { generateTitle } from '@/utils/i18n'
 import { computed } from 'vue'
 
 const props = defineProps({
