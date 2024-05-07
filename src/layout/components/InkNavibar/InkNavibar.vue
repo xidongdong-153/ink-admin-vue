@@ -5,6 +5,7 @@
       <breadcrumb-path class="breadcrumb-container" />
     </div>
     <div class="right-menu">
+      <theme-picker class="right-menu-item hover-effect"></theme-picker>
       <lang-select class="right-menu-item hover-effect" />
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
@@ -39,6 +40,7 @@
 import BreadcrumbPath from '@/components/Breadcrumb/BreadcrumbPath'
 import HamburgerIcon from '@/components/HamburgerIcon/HamburgerIcon'
 import LangSelect from '@/components/LangSelect/LangSelect'
+import ThemePicker from '@/components/ThemeSelect/ThemeSelect'
 import store from '@/store'
 
 const logout = () => {

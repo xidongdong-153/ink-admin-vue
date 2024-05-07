@@ -1,0 +1,13 @@
+{
+  "primary": "color(primary)",
+  "light-3": "color(primary tint(30%))",
+  "light-5": "color(primary tint(50%))",
+  "light-7": "color(primary tint(70%))",
+  "light-8": "color(primary tint(80%))",
+  "light-9": "color(primary tint(90%))",
+  "dark-2": "color(primary shade(10%))",
+  "subMenuHover": "color(primary tint(70%))",
+  "subMenuBg": "color(primary tint(80%))",
+  "menuHover": "color(primary tint(90%))",
+  "menuBg": "color(primary)"
+}

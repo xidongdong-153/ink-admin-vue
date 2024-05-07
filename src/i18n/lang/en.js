@@ -16,7 +16,7 @@ export default {
      You can log in with the imported username <br />
      The password is unified as: 123456 <br />
      <b>Note: Import user-discriminatory Chinese and English libraries! ! ! ! </b>
-    `
+    `,
   },
   route: {
     profile: 'Profile',
@@ -31,23 +31,24 @@ export default {
     articleRanking: 'ArticleRanking',
     articleCreate: 'ArticleCreate',
     articleDetail: 'ArticleDetail',
-    articleEditor: 'ArticleEditor'
+    articleEditor: 'ArticleEditor',
   },
   toast: {
-    switchLangSuccess: 'Switch Language Success'
+    switchLangSuccess: 'Switch Language Success',
   },
   tagsView: {
     refresh: 'Refresh',
     closeRight: 'Close Rights',
-    closeOther: 'Close Others'
+    closeOther: 'Close Others',
   },
   theme: {
     themeColorChange: 'Theme Color Change',
-    themeChange: 'Theme Change'
+    themeChange: 'Theme Change',
   },
   universal: {
+    title: 'tip',
     confirm: 'confirm',
-    cancel: 'cancel'
+    cancel: 'cancel',
   },
   navBar: {
     themeChange: 'Theme Modification',
@@ -57,7 +58,7 @@ export default {
     guide: 'Function Guide',
     home: 'Home',
     course: 'Course homepage',
-    logout: 'Log out'
+    logout: 'Log out',
   },
   guide: {
     close: 'close',
@@ -80,7 +81,7 @@ export default {
     tagTitle: 'Label',
     tagDesc: 'Opened page tab',
     sidebarTitle: 'menu',
-    sidebarDesc: 'Project function menu'
+    sidebarDesc: 'Project function menu',
   },
   profile: {
     muted:
@@ -94,7 +95,7 @@ export default {
     name: 'Sunday',
     job: 'A front-end development program',
     Introduction:
-      'A senior technical expert, once worked in a domestic first-line Internet company, and has coordinated multiple large-scale projects with more than tens of millions of users. Committed to researching big front-end technology, he has been invited to participate in domestic front-end technology sharing sessions many times, such as: Google China Technology Sharing Session in 2018.'
+      'A senior technical expert, once worked in a domestic first-line Internet company, and has coordinated multiple large-scale projects with more than tens of millions of users. Committed to researching big front-end technology, he has been invited to participate in domestic front-end technology sharing sessions many times, such as: Google China Technology Sharing Session in 2018.',
   },
   userInfo: {
     print: 'Print',
@@ -110,11 +111,11 @@ export default {
     experience: 'Experience',
     major: 'Professional',
     glory: 'Glory',
-    foot: 'Signature:___________Date:___________'
+    foot: 'Signature:___________Date:___________',
   },
   uploadExcel: {
     upload: 'Click upload',
-    drop: 'Drag files here'
+    drop: 'Drag files here',
   },
   excel: {
     importExcel: 'excel import',
@@ -139,7 +140,7 @@ export default {
     importSuccess: ' Employee data imported successfully',
     dialogTitle1: 'Are you sure you want to delete the user ',
     dialogTitle2: ' Is it?',
-    roleDialogTitle: 'Configure roles'
+    roleDialogTitle: 'Configure roles',
   },
   role: {
     buttonTxt: 'New Role',
@@ -152,12 +153,12 @@ export default {
     dialogTitle: 'New role',
     dialogRole: 'Role Name',
     dialogDesc: 'Role description',
-    updateRoleSuccess: 'User role updated successfully'
+    updateRoleSuccess: 'User role updated successfully',
   },
   permission: {
     name: 'Authority name',
     mark: 'Authority ID',
-    desc: 'Permission description'
+    desc: 'Permission description',
   },
   article: {
     ranking: 'Ranking',
@@ -179,7 +180,7 @@ export default {
     commit: 'commit',
     createSuccess: 'The article was created successfully',
     editorSuccess: 'Article modified successfully',
-    sortSuccess: 'Article ranking modified successfully'
+    sortSuccess: 'Article ranking modified successfully',
   },
   chart: {
     trendDataTitle: 'Cumulative income of this month (ten thousand yuan)',
@@ -203,6 +204,6 @@ export default {
     sheetCoverage: 'Coverage rate',
     sheetReceivable: 'Receivables today',
     sheetActual: 'Actual today',
-    sheetBalance: 'Balance today'
-  }
+    sheetBalance: 'Balance today',
+  },
 }

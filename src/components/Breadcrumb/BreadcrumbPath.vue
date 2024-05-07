@@ -10,9 +10,14 @@
           generateTitle(route.meta.title)
         }}</span>
         <!-- 可点击项 -->
-        <a v-else class="redirect" @click.prevent="onLinkClick(route)">{{
-          generateTitle(route.meta.title)
-        }}</a>
+        <a
+          v-else
+          :key="linkHoverColor"
+          class="redirect"
+          :style="{ color: linkHoverColor }"
+          @click.prevent="onLinkClick(route)"
+          >{{ generateTitle(route.meta.title) }}</a
+        >
       </el-breadcrumb-item>
     </transition-group>
   </el-breadcrumb>
@@ -20,7 +25,7 @@
 
 <script setup>
 import { generateTitle } from '@/utils/i18n'
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 
@@ -50,7 +55,7 @@ const onLinkClick = (route) => {
 
 const store = useStore()
 
-const linkHoverColor = ref(store.getters.cssVar.menuBg)
+const linkHoverColor = computed(() => store.getters.cssVar.menuBg)
 </script>
 
 <style lang="scss" scoped>
@@ -71,7 +76,7 @@ const linkHoverColor = ref(store.getters.cssVar.menuBg)
   }
 
   .redirect:hover {
-    color: v-bind(linkHoverColor);
+    color: v-bind('linkHoverColor');
   }
 }
 </style>

@@ -10,7 +10,7 @@
     <ink-sidebar
       id="guide-sidebar"
       class="sidebar-container"
-      :style="{ backgroundColor: variables.menuBg }"
+      :style="{ backgroundColor: store.getters.cssVar.menuBg }"
     ></ink-sidebar>
     <!-- </el-scrollbar> -->
     <div class="main-container">
@@ -28,7 +28,6 @@
 import InkAppMain from '@/layout/components/InkAppMain/InkAppMain'
 import InkNavibar from '@/layout/components/InkNavibar/InkNavibar'
 import InkSidebar from '@/layout/components/InkSidebar/InkSidebar'
-import variables from '@/styles/variables.module.scss'
 import { useStore } from 'vuex'
 
 const store = useStore()
