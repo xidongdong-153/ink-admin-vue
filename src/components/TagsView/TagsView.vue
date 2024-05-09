@@ -4,10 +4,6 @@
       <router-link
         class="tags-view-item"
         :class="isActive(tag) ? 'active' : ''"
-        :style="{
-          backgroundColor: isActive(tag) ? store.getters.cssVar.menuBg : '',
-          borderColor: isActive(tag) ? store.getters.cssVar.menuBg : '',
-        }"
         v-for="(tag, index) in store.getters['app/tagsViewList']"
         :key="tag.fullPath"
         :to="{ path: tag.fullPath }"
@@ -15,7 +11,11 @@
       >
         {{ tag.title }}
 
-        <div v-show="!isActive(tag)" @click.prevent.stop="onCloseClick(index)">
+        <div
+          v-show="!isActive(tag)"
+          class="tags-view-icon"
+          @click.prevent.stop="onCloseClick(index)"
+        >
           <el-icon>
             <CloseBold />
           </el-icon>
@@ -32,7 +32,7 @@
 
 <script setup>
 import { CloseBold } from '@element-plus/icons'
-import { reactive, ref, watch } from 'vue'
+import { computed, reactive, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 import ContextMenu from './ContextMenu.vue'
@@ -91,16 +91,18 @@ watch(visible, (val) => {
     document.body.removeEventListener('click', closeMenu)
   }
 })
+
+const bgColor = computed(() => store.getters.cssVar.menuBg)
 </script>
 
 <style lang="scss" scoped>
 .tags-view-container {
   height: 34px;
   width: 100%;
-  background: #fff;
   border-bottom: 1px solid #d8dce5;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 0 3px 0 rgba(0, 0, 0, 0.04);
   .tags-view-item {
+    overflow: hidden;
     display: inline-flex;
     align-items: center;
     position: relative;
@@ -109,11 +111,11 @@ watch(visible, (val) => {
     line-height: 26px;
     border: 1px solid #d8dce5;
     color: #495060;
-    background: #fff;
     padding: 0 8px;
     font-size: 12px;
     margin-left: 5px;
     margin-top: 4px;
+    transition: all 0.5s;
     &:first-of-type {
       margin-left: 15px;
     }
@@ -122,6 +124,8 @@ watch(visible, (val) => {
     }
     &.active {
       color: #fff;
+      // background-color: v-bind(bgColor);
+      // border-color: v-bind(bgColor);
       &::before {
         content: '';
         background: #fff;
@@ -132,6 +136,34 @@ watch(visible, (val) => {
         position: relative;
         margin-right: 4px;
       }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to right,
+        v-bind(bgColor) 50%,
+        transparent 50%
+      );
+      background-size: 200% 100%;
+      background-position: right bottom;
+      transition: background-position 0.5s ease-out;
+      z-index: -1;
+    }
+
+    &.active::after {
+      background-position: left bottom;
+    }
+
+    .tags-view-icon {
+      display: inline-flex;
+      align-items: center;
+      margin-left: 5px;
     }
     // close 按钮
     .el-icon-close {
