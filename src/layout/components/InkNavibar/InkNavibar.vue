@@ -2,10 +2,11 @@
   <div class="navbar">
     <div>
       <hamburger-icon class="hamburger-container" />
-      <breadcrumb-path class="breadcrumb-container" />
+      <breadcrumb-path id="guide-breadcrumb" class="breadcrumb-container" />
     </div>
     <div class="right-menu">
       <header-search class="right-menu-item hover-effect"></header-search>
+      <guide class="right-menu-item hover-effect" />
       <screenfull class="right-menu-item hover-effect" />
       <theme-picker class="right-menu-item hover-effect"></theme-picker>
       <lang-select class="right-menu-item hover-effect" />
@@ -40,6 +41,7 @@
 
 <script setup>
 import BreadcrumbPath from '@/components/Breadcrumb/BreadcrumbPath'
+import Guide from '@/components/Guide/GuideCom'
 import HamburgerIcon from '@/components/HamburgerIcon/HamburgerIcon'
 import HeaderSearch from '@/components/HeaderSearch/HeaderSearch'
 import LangSelect from '@/components/LangSelect/LangSelect'
