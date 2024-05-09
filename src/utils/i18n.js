@@ -12,9 +12,9 @@ export function generateTitle(title) {
  */
 export function watchSwitchLang(...cbs) {
   watch(
-    () => store.getters.language,
+    () => store.getters['app/language'],
     () => {
-      cbs.forEach((cb) => cb(store.getters.language))
+      cbs.forEach((cb) => cb(store.getters['app/language']))
     }
   )
 }

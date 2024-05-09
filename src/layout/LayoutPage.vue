@@ -17,6 +17,8 @@
       <div class="fixed-header">
         <!-- 顶部的 navbar -->
         <ink-navibar></ink-navibar>
+        <!-- tags -->
+        <tags-view></tags-view>
       </div>
       <!-- 内容区 -->
       <ink-app-main></ink-app-main>
@@ -25,6 +27,7 @@
 </template>
 
 <script setup>
+import TagsView from '@/components/TagsView/TagsView'
 import InkAppMain from '@/layout/components/InkAppMain/InkAppMain'
 import InkNavibar from '@/layout/components/InkNavibar/InkNavibar'
 import InkSidebar from '@/layout/components/InkSidebar/InkSidebar'
