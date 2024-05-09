@@ -45,7 +45,6 @@ const store = useStore()
 const isActive = (tag) => {
   return tag.path === route.path
 }
-
 /**
  * 关闭 tag 的点击事件
  */

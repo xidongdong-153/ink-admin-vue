@@ -2,7 +2,7 @@ import store from '@/store'
 import { isCheckTimeout } from '@/utils/auth'
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
-
+console.log('process.env', process.env)
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
   timeout: 5000,

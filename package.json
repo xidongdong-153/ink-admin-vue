@@ -6,7 +6,8 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "prepare": "husky install",
-    "start:dev": "vue-cli-service serve"
+    "start:dev": "vue-cli-service serve",
+    "start:test": "vue-cli-service serve --mode test:unit"
   },
   "dependencies": {
     "@element-plus/icons": "^0.0.11",
