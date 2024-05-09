@@ -12,6 +12,7 @@ import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 
+import { watchSwitchLang } from '@/utils/i18n'
 import { generateNewStyle, writeNewStyle } from '@/utils/theme'
 
 const store = useStore()
@@ -31,6 +32,15 @@ async function initTheme() {
   writeNewStyle(newStyleText)
 }
 initTheme()
+
+/**
+ * 监听 语言变化，重新获取个人信息
+ */
+watchSwitchLang(() => {
+  if (store.getters['user/token']) {
+    store.dispatch('user/getUserInfo')
+  }
+})
 </script>
 
 <style></style>

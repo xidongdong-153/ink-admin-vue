@@ -15,7 +15,10 @@ export default {
       state.token = token
     },
     setUserInfo(state, userInfo) {
-      state.userInfo = userInfo
+      state.userInfo = {
+        ...userInfo,
+        avatar: 'https://avatars.githubusercontent.com/u/78343897?v=4',
+      }
     },
   },
   actions: {

@@ -101,6 +101,7 @@ const bgColor = computed(() => store.getters.cssVar.menuBg)
   width: 100%;
   border-bottom: 1px solid #d8dce5;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 0 3px 0 rgba(0, 0, 0, 0.04);
+  background: #fff;
   .tags-view-item {
     overflow: hidden;
     display: inline-flex;
@@ -116,6 +117,7 @@ const bgColor = computed(() => store.getters.cssVar.menuBg)
     margin-left: 5px;
     margin-top: 4px;
     transition: all 0.5s;
+    z-index: 1;
     &:first-of-type {
       margin-left: 15px;
     }

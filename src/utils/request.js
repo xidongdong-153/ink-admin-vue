@@ -23,6 +23,8 @@ service.interceptors.request.use(async (config) => {
     config.headers.Authorization = `Bearer ${token}`
   }
 
+  config.headers['Accept-Language'] = store.getters['app/language']
+
   return config
 })
 
