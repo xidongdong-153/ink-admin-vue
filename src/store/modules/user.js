@@ -1,6 +1,6 @@
 import { getUserInfo, login } from '@/api/system'
 import { TOKEN } from '@/constant'
-import router from '@/router'
+import router, { resetRouter } from '@/router'
 import { setTimeStamp } from '@/utils/auth'
 import { getItem, removeAllItem, setItem } from '@/utils/storage'
 import md5 from 'md5'
@@ -11,17 +11,30 @@ export default {
     userInfo: {},
   }),
   mutations: {
+    /**
+     * 设置Token
+     */
     setToken(state, token) {
       state.token = token
     },
+    /**
+     * 设置用户信息
+     */
     setUserInfo(state, userInfo) {
-      state.userInfo = {
-        ...userInfo,
-        avatar: 'https://avatars.githubusercontent.com/u/78343897?v=4',
+      if (Object.keys(userInfo).length === 0) {
+        state.userInfo = {}
+      } else {
+        state.userInfo = {
+          ...userInfo,
+          avatar: 'https://avatars.githubusercontent.com/u/78343897?v=4',
+        }
       }
     },
   },
   actions: {
+    /**
+     * 用户登录
+     */
     async login({ commit }, userInfo) {
       const { username, password } = userInfo
 
@@ -37,14 +50,21 @@ export default {
         throw new Error(error.message)
       }
     },
-    async getUserInfo(context) {
+    /**
+     * 获取用户信息
+     */
+    async getUserInfo({ commit }) {
       const res = await getUserInfo()
-      this.commit('user/setUserInfo', res)
+      commit('setUserInfo', res)
       return res
     },
-    logout() {
-      this.commit('user/setToken', '')
-      this.commit('user/setUserInfo', {})
+    /**
+     * 用户退出登录
+     */
+    logout({ commit }) {
+      resetRouter()
+      commit('setToken', '')
+      commit('setUserInfo', {})
       removeAllItem()
       router.push('/login')
     },

@@ -15,7 +15,6 @@ export function useLogin({ loginForm, loginFormRef }) {
 
       try {
         await store.dispatch('user/login', loginForm.value)
-        await store.dispatch('user/getUserInfo')
         loginLoading.value = false
         // 登录后操作
         router.push('/')

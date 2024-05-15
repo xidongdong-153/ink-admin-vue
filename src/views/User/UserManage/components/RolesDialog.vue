@@ -90,6 +90,7 @@ const onConfirm = async () => {
  * 关闭
  */
 const closed = () => {
+  userRoleTitleList.value = []
   emits('update:modelValue', false)
 }
 </script>

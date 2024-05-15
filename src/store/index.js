@@ -1,5 +1,6 @@
 import { MAIN_COLOR } from '@/constant'
 import app from '@/store/modules/app'
+import permission from '@/store/modules/permission'
 import theme from '@/store/modules/theme'
 import user from '@/store/modules/user'
 
@@ -23,5 +24,6 @@ export default createStore({
     user,
     app,
     theme,
+    permission,
   },
 })

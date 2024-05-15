@@ -15,6 +15,7 @@
           #default="{ row }"
         >
           <el-button
+            v-permission="['distributePermission']"
             type="primary"
             size="small"
             @click="onDistributePermissionClick(row)"

@@ -11,7 +11,6 @@
       check-strictly
       node-key="id"
       default-expand-all
-      :default-checked-keys="defaultCheckedKeys"
       :props="defaultProps"
     >
     </el-tree>
@@ -67,12 +66,10 @@ const getPermissionList = async () => {
 getPermissionList()
 watchSwitchLang(getPermissionList)
 
-const defaultCheckedKeys = ref([])
-
 // 获取当前用户角色的权限
 const getRolePermission = async () => {
   const checkedKeys = await rolePermission(props.roleId)
-  defaultCheckedKeys.value = checkedKeys
+  treeRef.value.setCheckedKeys(checkedKeys)
 }
 
 watch(

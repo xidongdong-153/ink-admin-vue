@@ -1,110 +1,18 @@
 import Layout from '@/layout/LayoutPage.vue'
+import Article from '@/router/modules/Article'
+import User from '@/router/modules/User'
+import store from '@/store'
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 /**
  * 私有路由表
  */
-const privateRoutes = [
-  {
-    path: '/user',
-    component: Layout,
-    redirect: '/user/manage',
-    meta: {
-      title: 'user',
-      icon: 'personnel',
-    },
-    children: [
-      {
-        path: '/user/manage',
-        component: () => import('@/views/User/UserManage/UserManage'),
-        meta: {
-          title: 'userManage',
-          icon: 'personnel-manage',
-        },
-      },
-      {
-        path: '/user/role',
-        component: () => import('@/views/User/RoleList/RoleList'),
-        meta: {
-          title: 'roleList',
-          icon: 'role',
-        },
-      },
-      {
-        path: '/user/permission',
-        component: () => import('@/views/User/PermissionList/PermissionList'),
-        meta: {
-          title: 'permissionList',
-          icon: 'permission',
-        },
-      },
-      {
-        path: '/user/info/:id',
-        name: 'userInfo',
-        component: () => import('@/views/User/UserInfo/UserInfo'),
-        props: true,
-        meta: {
-          title: 'userInfo',
-        },
-      },
-      {
-        path: '/user/import',
-        name: 'import',
-        component: () => import('@/views/User/UserImport/UserImport'),
-        meta: {
-          title: 'excelImport',
-        },
-      },
-    ],
-  },
-  {
-    path: '/article',
-    component: Layout,
-    redirect: '/article/ranking',
-    meta: {
-      title: 'article',
-      icon: 'article',
-    },
-    children: [
-      {
-        path: '/article/ranking',
-        component: () =>
-          import('@/views/Article/ArticleRanking/ArticleRanking'),
-        meta: {
-          title: 'articleRanking',
-          icon: 'article-ranking',
-        },
-      },
-      {
-        path: '/article/:id',
-        component: () => import('@/views/Article/ArticleDetail/ArticleDetail'),
-        meta: {
-          title: 'articleDetail',
-        },
-      },
-      {
-        path: '/article/create',
-        component: () => import('@/views/Article/ArticleCreate/ArticleCreate'),
-        meta: {
-          title: 'articleCreate',
-          icon: 'article-create',
-        },
-      },
-      {
-        path: '/article/editor/:id',
-        component: () => import('@/views/Article/ArticleCreate/ArticleCreate'),
-        meta: {
-          title: 'articleEditor',
-        },
-      },
-    ],
-  },
-]
+export const privateRoutes = [User, Article]
 
 /**
  * 公开路由表
  */
-const publicRoutes = [
+export const publicRoutes = [
   {
     path: '/login',
     component: () => import('@/views/Login/LoginPage'),
@@ -140,7 +48,23 @@ const publicRoutes = [
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes: [...publicRoutes, ...privateRoutes],
+  routes: [...publicRoutes],
 })
+
+/**
+ * 初始化路由表
+ */
+export function resetRouter() {
+  if (
+    store.getters['user/userInfo'] &&
+    store.getters['user/userInfo'].permission &&
+    store.getters['user/userInfo'].permission.menus
+  ) {
+    const menus = store.getters['user/userInfo'].permission.menus
+    menus.forEach((menu) => {
+      router.removeRoute(menu)
+    })
+  }
+}
 
 export default router

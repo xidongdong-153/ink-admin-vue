@@ -18,7 +18,20 @@ router.beforeEach(async (to, from, next) => {
     // 如果用户已登录且访问登录页，则重定向到主页，否则正常访问
     if (Object.keys(hasUserInfo).length === 0) {
       // 触发获取用户信息的 action
-      await store.dispatch('user/getUserInfo')
+      const { permission } = await store.dispatch('user/getUserInfo')
+
+      // 处理用户权限，筛选出需要添加的权限
+      const filterRoutes = await store.dispatch(
+        'permission/filterRoutes',
+        permission.menus
+      )
+      // 利用 addRoute 循环添加
+      filterRoutes.forEach((item) => {
+        router.addRoute(item)
+      })
+
+      // 添加完动态路由之后，需要在进行一次主动跳转
+      return next(to.path)
     }
     if (isLoginPage) {
       next('/')
