@@ -28,7 +28,7 @@
 
 <script setup>
 import { ElMessage } from 'element-plus'
-import { defineProps, ref } from 'vue'
+import { ref } from 'vue'
 import XLSX from 'xlsx'
 import { getHeaderRow, isExcel } from './utils'
 
