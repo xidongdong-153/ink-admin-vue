@@ -138,11 +138,11 @@ const printObj = {
   }
   .header {
     display: flex;
-    ::v-deep .el-descriptions {
+    :deep(.el-descriptions) {
       flex-grow: 1;
     }
     .avatar {
-      width: 187px;
+      width: 165px;
       box-sizing: border-box;
       padding: 30px 20px;
       border: 1px solid #ebeef5;

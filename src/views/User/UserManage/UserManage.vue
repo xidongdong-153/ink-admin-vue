@@ -50,7 +50,7 @@
           width="260"
         >
           <template #default="{ row }">
-            <el-button type="primary" size="mini" @click="onShowClick(row._id)">
+            <el-button type="primary" size="small" @click="onShowClick(row._id)">
               {{ $t('msg.excel.show') }}
             </el-button>
 
