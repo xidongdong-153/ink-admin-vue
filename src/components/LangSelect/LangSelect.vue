@@ -40,7 +40,7 @@ defineProps({
 })
 
 const store = useStore()
-const language = computed(() => store.getters.language)
+const language = computed(() => store.getters['app/language'])
 
 const i18n = useI18n()
 const handleSetLanguage = async (lang) => {

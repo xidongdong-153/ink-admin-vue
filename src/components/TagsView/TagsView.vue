@@ -110,6 +110,7 @@ const bgColor = computed(() => store.getters.cssVar.menuBg)
     height: 26px;
     line-height: 26px;
     border: 1px solid #d8dce5;
+    border-radius: 3px;
     color: #495060;
     padding: 0 8px;
     font-size: 12px;
@@ -151,7 +152,7 @@ const bgColor = computed(() => store.getters.cssVar.menuBg)
         v-bind(bgColor) 50%,
         transparent 50%
       );
-      background-size: 200% 100%;
+      background-size: 201% 100%;
       background-position: right bottom;
       transition: background-position 0.5s ease-out;
       z-index: -1;
